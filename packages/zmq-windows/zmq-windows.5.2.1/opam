@@ -1,0 +1,44 @@
+opam-version: "2.0"
+synopsis: "OCaml bindings for ZeroMQ 4.x"
+description: """
+This library contains basic bindings for ZMQ.
+Lwt aware bindings to zmq are availble though package zmq-lwt
+Async aware bindings to zmq are available though package zmq-async"""
+maintainer: ["Daniel Larraz <daniel-larraz@uiowa.edu>"]
+authors: ["Anders Fugmann" "Pedro Borges" "Peter Zotov"]
+license: "MIT"
+homepage: "https://github.com/issuu/ocaml-zmq"
+bug-reports: "https://github.com/issuu/ocaml-zmq/issues"
+depends: [
+  "dune" {>= "2.7"}
+  "ocaml-windows" {>= "4.03.0"}
+]
+patches: [
+    "patches/flags.patch"
+]
+build: [
+  ["dune" "subst"] {pinned}
+  [
+    "dune"
+    "build"
+    "-p"
+    "zmq"
+    "-j"
+    jobs
+    "@install"
+    "-x"
+    "windows"
+  ]
+]
+dev-repo: "git+https://github.com/issuu/ocaml-zmq.git"
+extra-files: [
+  "patches/flags.patch" "md5=902b917b26b509c130171352912d5e8e"
+]
+url {
+  src:
+    "https://github.com/issuu/ocaml-zmq/releases/download/5.2.1/zmq-5.2.1.tbz"
+  checksum: [
+    "sha256=85529f693ad416a101b2fe61141ec9c2c47adf43340ca9ea841d101e9c5c1ca7"
+    "sha512=b0c8e1f0ef0466fe4c45ebcb6d5d975931d7cbaac906a440d1123a1557caf8ca4d47c8f6877dd25db96a2b5b136be49b4f345eb1f98c249476cea203ec9297ac"
+  ]
+}

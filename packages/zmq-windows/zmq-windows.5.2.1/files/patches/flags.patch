@@ -1,0 +1,24 @@
+diff --git a/zmq/src/dune b/zmq/src/dune
+index 1a3dbff..9a8641f 100644
+--- a/zmq/src/dune
++++ b/zmq/src/dune
+@@ -6,17 +6,10 @@
+   (language c)
+   (names caml_zmq_stubs socket context fail poll msg)
+   (flags
+-   (:include c_flags.sexp)
++   -I
++   /home/daniel/Software/
+    -Wall
+    -Wextra
+    -O2))
+- (c_library_flags
+-  (:include c_library_flags.sexp))
+  (libraries unix bigarray))
+ 
+-(rule
+- (targets c_flags.sexp c_library_flags.sexp)
+- (deps
+-  (:discover config/discover.exe))
+- (action
+-  (run %{discover})))
